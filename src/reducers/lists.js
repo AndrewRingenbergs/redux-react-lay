@@ -1,14 +1,16 @@
-export default function() {
-  return {
-      todoList: [1, 2, 3, 4, 5]
-    }
-}
+import { UPDATE_STATE } from '../actions';
 
-/*export default function basic(state = [], action) {
+const initialState =  {
+  todoList: [1, 2, 4, 5]
+};
+
+export default function basefunction(state = initialState, action) {
   switch (action.type) {
-    case 'NEW':
-      return [2, 3];
+    case UPDATE_STATE:
+      return {
+        ...state, todoList: action.payload.todoList
+      };
     default:
       return state;
   }
-}*/
+}

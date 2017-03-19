@@ -5,14 +5,17 @@ import * as Actions from '../actions';
 import './App.css';
 
 class App extends Component {
+  buttonClicked(term) {
+    this.props.actions.buttonClicked(term);
+  }
 
   render() {
-    const numbers = this.props.todoList;
-    const listItems = numbers.map((number) => <li key={number.toString()}>{number}</li>);
-    
+    let numbers = this.props.todoList.slice();
+    let listItems = numbers.map((number) => <li key={number.toString()}>{number}</li>);
+
     return (
       <div className="App">
-        <button type='button' onClick={this.props.actions.buttonClicked}>Test</button>
+        <button type='button' onClick={event => this.buttonClicked(numbers)}>Test</button>
         <ul>
           {listItems}
         </ul>
